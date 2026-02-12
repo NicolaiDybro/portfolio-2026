@@ -24,7 +24,7 @@ export default function Header() {
         <nav className="flex items-center gap-2">
           <ThemeToggle />
           <a
-            href="https://github.com/nicolhaq"
+            href="https://github.com/NicolaiDybro"
             target="_blank"
             rel="noreferrer"
             className="underline-animate flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-blue-500/10 dark:hover:bg-blue-500/20"
