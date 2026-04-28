@@ -8,10 +8,10 @@ export default function Projects() {
   return (
     <section className="mx-auto w-full max-w-5xl px-6 py-16">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       >
         <h2 className="mb-4 text-3xl font-bold text-zinc-900 dark:text-zinc-50">
           Featured Projects

@@ -39,19 +39,19 @@ export default function Stats() {
     <section className="mx-auto w-full max-w-5xl px-6 py-16">
       <motion.div
         className="grid grid-cols-2 gap-6 rounded-2xl border border-white/10 bg-white/5 p-8 shadow-lg backdrop-blur-lg dark:border-white/5 dark:bg-white/5 md:grid-cols-4"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       >
         {stats.map((stat, index) => (
           <motion.div
             key={stat.label}
             className="text-center"
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1, type: "spring" }}
+            transition={{ delay: index * 0.07, type: "spring", stiffness: 200, damping: 20 }}
           >
             <div className="mb-2 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-4xl font-bold text-transparent dark:from-blue-400 dark:to-cyan-400 md:text-5xl">
               <AnimatedNumber value={stat.value} suffix={stat.suffix} />

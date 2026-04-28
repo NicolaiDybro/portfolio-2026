@@ -26,11 +26,11 @@ export default function ProjectCard({
       target="_blank"
       rel="noreferrer"
       className="group relative block overflow-hidden rounded-2xl border border-zinc-200 bg-white backdrop-blur-lg transition-all hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 dark:border-white/10 dark:bg-white/5"
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+      transition={{ duration: 0.25 }}
     >
       {/* Image */}
       {image ? (

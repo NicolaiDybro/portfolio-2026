@@ -33,10 +33,10 @@ export default function Contact() {
       className="mx-auto w-full max-w-5xl px-6 py-16"
     >
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
         className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-12 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5"
       >
         <div className="relative text-center">

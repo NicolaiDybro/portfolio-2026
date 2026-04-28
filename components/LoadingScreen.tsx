@@ -10,7 +10,7 @@ export default function LoadingScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -19,7 +19,7 @@ export default function LoadingScreen() {
     <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-gradient-to-br from-blue-600 via-cyan-600 to-blue-600"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-linear-to-br from-blue-600 via-cyan-600 to-blue-600"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}

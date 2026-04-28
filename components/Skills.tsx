@@ -53,24 +53,24 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.06,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" as const } },
 };
 
 export default function Skills() {
   return (
     <section className="mx-auto w-full max-w-5xl px-6 py-16">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       >
         <h2 className="mb-4 text-3xl font-bold text-zinc-900 dark:text-zinc-50">
           My Skills
@@ -92,8 +92,7 @@ export default function Skills() {
           <motion.div
             key={skill.title}
             variants={item}
-            whileHover={{ y: -8, scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            whileHover={{ y: -6, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
             className="gradient-border group relative overflow-hidden backdrop-blur-xl transition-all hover:shadow-2xl hover:shadow-blue-500/20"
           >
             <div className="relative h-full p-6">

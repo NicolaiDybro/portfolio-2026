@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 interface TypedTextProps {
   texts: string[];
@@ -53,11 +52,7 @@ export default function TypedText({
   return (
     <span className="inline-block">
       {displayText}
-      <motion.span
-        animate={{ opacity: [1, 0] }}
-        transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-        className="ml-1 inline-block h-6 w-0.5 bg-blue-600 dark:bg-blue-400"
-      />
+      <span className="cursor-blink ml-1 inline-block h-6 w-0.5 bg-blue-600 dark:bg-blue-400" />
     </span>
   );
 }

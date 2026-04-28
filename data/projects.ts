@@ -17,6 +17,14 @@ export const projects = [
   },
   {
     id: "p3",
+    title: "Retfærdigsag.dk",
+    description: "Website for the organization Retfærdigsag.dk",
+    href: "https://retfærdigsag.dk/",
+    image: "/retfærdigsag.png",
+    tech: ["Next.js", "Tailwind", "Sanity.io"],
+  },
+  {
+    id: "p4",
     title: "Labs Matriklen",
     description: "Website and prototypes developed for the Danish Geodata Agency",
     href: "https://labs.matriklen.dk/",

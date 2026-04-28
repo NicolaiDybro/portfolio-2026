@@ -47,9 +47,9 @@ export default function Hero() {
         />
       </div>
 
+      <motion.div style={{ opacity, scale }}>
       <motion.div
         className="flex flex-col items-center gap-8 text-center"
-        style={{ opacity, scale }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -80,7 +80,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Hi, I'm Nicolai!
+            Hi, I&apos;m Nicolai!
           </motion.h1>
           <motion.p
             className="mt-4 text-xl font-medium text-zinc-600 dark:text-zinc-400"
@@ -126,14 +126,14 @@ export default function Hero() {
             Contact me
           </MagneticButton>
           <MagneticButton
-            href="https://github.com/nicolhaq"
+            href="https://github.com/NicolaiDybro"
             className="underline-animate inline-flex h-11 items-center justify-center gap-2 rounded-md border border-blue-500/50 bg-transparent px-8 text-sm font-medium transition-colors hover:bg-blue-500/10"
           >
             <Github size={18} />
             GitHub
           </MagneticButton>
           <MagneticButton
-            href="https://linkedin.com/in/nicolhaq"
+            href="https://www.linkedin.com/in/nicolai-dybro-jensen-45aa22258/"
             className="underline-animate inline-flex h-11 items-center justify-center gap-2 rounded-md border border-blue-500/50 bg-transparent px-8 text-sm font-medium transition-colors hover:bg-blue-500/10"
           >
             <Linkedin size={18} />
@@ -141,16 +141,20 @@ export default function Hero() {
           </MagneticButton>
         </motion.div>
       </motion.div>
+      </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8"
-        style={{ opacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ delay: 1, y: { repeat: Infinity, duration: 1.5 } }}
-      >
-        <ArrowDown className="text-zinc-400" size={24} />
+      <motion.div className="absolute bottom-8" style={{ opacity }}>
+        <motion.div
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: [0, 10, 0] }}
+          transition={{
+            opacity: { delay: 1, duration: 0.5 },
+            y: { delay: 1, repeat: Infinity, duration: 1.5 },
+          }}
+        >
+          <ArrowDown className="text-zinc-400" size={24} />
+        </motion.div>
       </motion.div>
     </section>
   );
