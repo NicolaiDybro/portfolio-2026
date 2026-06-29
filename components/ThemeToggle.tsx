@@ -9,6 +9,8 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Intentional: sync mounted state after hydration to avoid SSR/client mismatch
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     // Check if dark class exists on html element
     const isDark = document.documentElement.classList.contains("dark");

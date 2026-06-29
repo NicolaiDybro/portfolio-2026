@@ -7,11 +7,13 @@ import Contact from "../components/Contact";
 import ScrollProgress from "../components/ScrollProgress";
 import LoadingScreen from "../components/LoadingScreen";
 import BackToTop from "../components/BackToTop";
+import ScrollHoverGuard from "../components/ScrollHoverGuard";
 
 export default function Home() {
   return (
     <>
       <LoadingScreen />
+      <ScrollHoverGuard />
       <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
         <ScrollProgress />
         <Header />

@@ -45,7 +45,7 @@ export default function MagneticButton({
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
     >
       <Component
-        ref={ref as any}
+        ref={ref as React.Ref<HTMLAnchorElement & HTMLButtonElement>}
         href={href}
         onClick={onClick}
         className={className}

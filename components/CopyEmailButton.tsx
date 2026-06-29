@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Copy, Check } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function CopyEmailButton() {
   const [copied, setCopied] = useState(false);
-  const email = "hello@nicolai.dev";
+  const email = "nicolai160g@gmail.com";
 
   const handleCopy = async () => {
     try {
@@ -22,14 +22,13 @@ export default function CopyEmailButton() {
         },
       });
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch {
       toast.error("Could not copy email");
     }
   };
 
   return (
     <>
-      <Toaster position="bottom-center" />
       <motion.button
         onClick={handleCopy}
         className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-blue-500/50 bg-transparent px-8 text-sm font-medium transition-colors hover:bg-blue-500/10"

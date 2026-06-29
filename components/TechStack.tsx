@@ -40,7 +40,7 @@ const item = {
 
 export default function TechStack() {
   return (
-    <section className="mx-auto w-full max-w-5xl px-6 py-16">
+    <section id="tech" className="mx-auto w-full max-w-5xl scroll-mt-20 px-6 py-16">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}

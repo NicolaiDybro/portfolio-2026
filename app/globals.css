@@ -11,6 +11,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Suppress hover effects while scrolling so cards don't flicker as the
+   cursor crosses them (toggled by ScrollHoverGuard). */
+body.is-scrolling * {
+  pointer-events: none !important;
+}
+
 :root {
   --background: #fafafa;
   --foreground: #171717;

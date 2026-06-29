@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { useState, FormEvent } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import confetti from "canvas-confetti";
@@ -21,7 +21,7 @@ export default function ContactForm() {
       zIndex: 9999,
     };
 
-    function fire(particleRatio: number, opts: any) {
+    function fire(particleRatio: number, opts: confetti.Options) {
       confetti({
         ...defaults,
         ...opts,
@@ -66,25 +66,35 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const toastStyle = { borderRadius: "10px", background: "#333", color: "#fff" };
 
-    // Trigger confetti
-    triggerConfetti();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    // Show success toast
-    toast.success("Message sent! 🎉 I'll get back to you as soon as possible!", {
-      duration: 4000,
-      style: {
-        borderRadius: "10px",
-        background: "#333",
-        color: "#fff",
-      },
-    });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error ?? "Failed to send message");
+      }
 
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      triggerConfetti();
+      toast.success("Message sent! 🎉 I'll get back to you as soon as possible!", {
+        duration: 4000,
+        style: toastStyle,
+      });
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      const description = err instanceof Error ? err.message : "Please try again later.";
+      toast.error(`Could not send your message. ${description}`, {
+        duration: 5000,
+        style: toastStyle,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

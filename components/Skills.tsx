@@ -65,7 +65,7 @@ const item = {
 
 export default function Skills() {
   return (
-    <section className="mx-auto w-full max-w-5xl px-6 py-16">
+    <section id="skills" className="mx-auto w-full max-w-5xl scroll-mt-20 px-6 py-16">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -88,12 +88,12 @@ export default function Skills() {
         whileInView="show"
         viewport={{ once: true }}
       >
-        {skills.map((skill, index) => (
+        {skills.map((skill) => (
           <motion.div
             key={skill.title}
             variants={item}
             whileHover={{ y: -6, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-            className="gradient-border group relative overflow-hidden backdrop-blur-xl transition-all hover:shadow-2xl hover:shadow-blue-500/20"
+            className="gradient-border group relative overflow-hidden backdrop-blur-xl transition-shadow hover:shadow-2xl hover:shadow-blue-500/20"
           >
             <div className="relative h-full p-6">
               <div className={`mb-4 inline-flex rounded-xl bg-gradient-to-r ${skill.color} p-3 shadow-lg`}>

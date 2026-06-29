@@ -6,7 +6,7 @@ import { projects } from "../data/projects";
 
 export default function Projects() {
   return (
-    <section className="mx-auto w-full max-w-5xl px-6 py-16">
+    <section id="projects" className="mx-auto w-full max-w-5xl scroll-mt-20 px-6 py-16">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -17,7 +17,7 @@ export default function Projects() {
           Featured Projects
         </h2>
         <p className="mb-8 text-lg text-zinc-600 dark:text-zinc-400">
-          Here are some of the projects I've worked on
+          Here are some of the projects I&apos;ve worked on
         </p>
       </motion.div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nicolaidybro.com"),
   title: "Nicolai - Software Engineer & Computer Science Student",
   description: "Product-oriented Software Developer with a business mindset. Experienced in full-stack web development, backend systems, and multiple programming languages. From bringing the latest tech to launching successful startups.",
   keywords: ["Nicolai", "Software Engineer", "Software Developer", "Computer Science", "Next.js", "React", "TypeScript", "Python", "Java", "Web Development"],
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "Nicolai's Portfolio",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/profile.jpg",
         width: 1200,
         height: 630,
         alt: "Nicolai - Software Engineer",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nicolai - Software Engineer & Computer Science Student",
     description: "Product-oriented Software Developer experienced in full-stack development, backend systems, and multiple programming languages.",
-    images: ["/og-image.jpg"],
+    images: ["/profile.jpg"],
   },
   robots: {
     index: true,

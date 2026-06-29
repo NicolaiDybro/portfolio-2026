@@ -30,7 +30,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="mx-auto w-full max-w-5xl px-6 py-16"
+      className="mx-auto w-full max-w-5xl scroll-mt-20 px-6 py-16"
     >
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -51,7 +51,7 @@ export default function Contact() {
           </motion.div>
 
           <h2 className="mb-4 text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-            Let's work together
+            Let&apos;s work together
           </h2>
           <p className="mb-8 text-lg text-zinc-600 dark:text-zinc-400">
             Have a project in mind? Send me a message!
