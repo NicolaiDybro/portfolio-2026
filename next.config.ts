@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  // Gift-card pages live in the separate "gavekort" Vercel project.
+  async rewrites() {
+    return [
+      {
+        source: "/G/:path*",
+        destination: "https://gavekort-alpha.vercel.app/G/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
