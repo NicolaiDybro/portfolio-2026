@@ -1,128 +1,45 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Github, Mail, Code2, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const sections = [
-  { label: "Skills", href: "#skills" },
+  { label: "Desk", href: "#top" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Tech", href: "#tech" },
+  { label: "Skills", href: "#skills" },
 ];
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <motion.header
-      className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/80 py-4 backdrop-blur-xl dark:border-white/10 dark:bg-black/50"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-xl font-bold transition-colors hover:text-blue-600 dark:hover:text-blue-400"
-        >
-          <Code2 size={24} className="text-blue-600 dark:text-blue-400" />
-          <span>Nicolai</span>
-        </Link>
+    <header className="sticky top-0 z-50 border-b border-rule bg-ground/85 backdrop-blur-md">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <a href="#top" className="flex items-center gap-2.5 rounded">
+          {/* mark: three linked nodes */}
+          <svg viewBox="0 0 28 28" className="h-7 w-7" aria-hidden>
+            <rect x="1" y="9" width="8" height="10" rx="2" fill="none" stroke="var(--ink)" strokeWidth="1.8" />
+            <rect x="19" y="9" width="8" height="10" rx="2" fill="var(--signal)" />
+            <path d="M9 14 H19" stroke="var(--ink)" strokeWidth="1.8" />
+          </svg>
+          <span className="text-[16px] font-bold tracking-tight">Nicolai Dybro Jensen</span>
+        </a>
 
-        {/* Desktop section nav */}
-        <nav className="hidden items-center gap-1 md:flex">
-          {sections.map((section) => (
+        <nav aria-label="Sections" className="flex items-center gap-1">
+          {sections.map((s) => (
             <a
-              key={section.href}
-              href={section.href}
-              className="rounded-lg px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-blue-500/10 hover:text-blue-600 dark:text-zinc-300 dark:hover:bg-blue-500/20 dark:hover:text-blue-400"
+              key={s.href}
+              href={s.href}
+              className="hidden rounded-md px-3 py-1.5 text-sm font-semibold text-muted transition-colors hover:bg-surface hover:text-ink sm:block"
             >
-              {section.label}
+              {s.label}
             </a>
           ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
+          <a
+            href="#contact"
+            className="rounded-md bg-ink px-3 py-1.5 text-sm font-semibold text-ground transition-opacity hover:opacity-85"
+          >
+            Contact
+          </a>
           <ThemeToggle />
-
-          {/* Desktop actions */}
-          <nav className="hidden items-center gap-2 md:flex">
-            <a
-              href="https://github.com/NicolaiDybro"
-              target="_blank"
-              rel="noreferrer"
-              className="underline-animate flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-blue-500/10 dark:hover:bg-blue-500/20"
-            >
-              <Github size={16} />
-              <span>GitHub</span>
-            </a>
-            <a
-              href="#contact"
-              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 px-3 py-2 text-sm text-zinc-50 shadow-md shadow-blue-500/30 transition-all hover:shadow-lg hover:shadow-blue-500/40"
-            >
-              <Mail size={16} />
-              <span>Contact</span>
-            </a>
-          </nav>
-
-          {/* Mobile menu toggle */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen((open) => !open)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-blue-500/10 md:hidden dark:hover:bg-blue-500/20"
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        </nav>
       </div>
-
-      {/* Mobile menu panel */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden md:hidden"
-          >
-            <div className="mx-auto flex max-w-5xl flex-col gap-1 px-6 pt-4">
-              {sections.map((section) => (
-                <a
-                  key={section.href}
-                  href={section.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-lg px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-blue-500/10 hover:text-blue-600 dark:text-zinc-300 dark:hover:bg-blue-500/20 dark:hover:text-blue-400"
-                >
-                  {section.label}
-                </a>
-              ))}
-              <a
-                href="https://github.com/NicolaiDybro"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-blue-500/10 hover:text-blue-600 dark:text-zinc-300 dark:hover:bg-blue-500/20 dark:hover:text-blue-400"
-              >
-                <Github size={16} />
-                GitHub
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setMenuOpen(false)}
-                className="mt-1 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 px-3 py-2 text-sm text-zinc-50 shadow-md shadow-blue-500/30 transition-all hover:shadow-lg hover:shadow-blue-500/40"
-              >
-                <Mail size={16} />
-                Contact
-              </a>
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

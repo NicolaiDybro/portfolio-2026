@@ -1,161 +1,62 @@
-"use client";
-
-import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
-import TypedText from "./TypedText";
-import MagneticButton from "./MagneticButton";
+import { Github, Linkedin, Mail } from "lucide-react";
+import DeskExperience from "./desk/DeskExperience";
+import { EMAIL, GITHUB, LINKEDIN } from "../lib/site";
+
+const secondaryBtn =
+  "inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-rule bg-surface px-4 text-[15px] font-semibold transition-colors hover:border-ink";
 
 export default function Hero() {
-  const { scrollY } = useScroll();
-  
-  // Parallax effects
-  const y1 = useTransform(scrollY, [0, 500], [0, 150]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
   return (
-    <section className="relative mx-auto flex min-h-[85vh] w-full max-w-5xl flex-col items-center justify-center px-6 py-20">
-      {/* Animated background gradient with parallax */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl"
-          style={{ y: y1 }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl"
-          style={{ y: y2 }}
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-      </div>
-
-      <motion.div style={{ opacity, scale }}>
-      <motion.div
-        className="flex flex-col items-center gap-8 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {/* Profile Image */}
-        <motion.div
-          className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-blue-500/50 shadow-xl shadow-blue-500/20 dark:border-blue-400/50"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          whileHover={{ scale: 1.05 }}
-        >
-          <Image
-            src="/profile.jpg"
-            alt="Nicolai"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 to-transparent" />
-        </motion.div>
-
-        {/* Name & Title */}
+    <section id="top" className="pb-20 pt-6 md:pt-8 lg:pb-28">
+      {/* compact intro, so the desk gets the stage */}
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div>
-          <motion.h1
-            className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent dark:from-blue-400 dark:via-cyan-400 dark:to-blue-400 sm:text-6xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            Hi, I&apos;m Nicolai!
-          </motion.h1>
-          <motion.p
-            className="mt-4 text-xl font-medium text-zinc-600 dark:text-zinc-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <TypedText
-              texts={[
-                "Software Engineer",
-                "Computer Science Student",
-                "Full Stack Developer",
-              ]}
-              typingSpeed={100}
-              deletingSpeed={50}
-              delayBetween={2000}
-            />
-          </motion.p>
+          <div className="flex items-center gap-4">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-rule sm:h-16 sm:w-16">
+              <Image
+                src="/profile.jpg"
+                alt="Portrait of Nicolai Dybro Jensen"
+                fill
+                sizes="64px"
+                className="object-cover"
+                priority
+              />
+            </div>
+            <h1 className="text-[clamp(2rem,4.6vw,3.6rem)] font-extrabold leading-[1] tracking-[-0.035em]">
+              Nicolai Dybro Jensen
+              <span className="block text-signal">Software engineer.</span>
+            </h1>
+          </div>
+          <p className="mt-4 max-w-[60ch] text-[clamp(1.05rem,1.6vw,1.2rem)] leading-snug text-muted [text-wrap:pretty]">
+            Computer Science at Aalborg University and student developer at the Danish Geodata
+            Agency. I build complete systems, and some of them run in production for real clients.
+          </p>
         </div>
 
-        {/* Description */}
-        <motion.p
-          className="max-w-2xl text-lg text-zinc-700 dark:text-zinc-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          I am a product-oriented Software Developer with a business mindset from bringing the latest tech to launching successful startups!
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <MagneticButton
-            href="#contact"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-gradient-to-r from-blue-600 to-cyan-600 px-8 text-sm font-medium text-zinc-50 shadow-lg shadow-blue-500/30 transition-all hover:from-blue-700 hover:to-cyan-700"
+        <div className="mt-5 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap">
+          <a
+            href={`mailto:${EMAIL}`}
+            className="col-span-2 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-signal px-5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a44d1]"
           >
-            <Mail size={18} />
-            Contact me
-          </MagneticButton>
-          <MagneticButton
-            href="https://github.com/NicolaiDybro"
-            className="underline-animate inline-flex h-11 items-center justify-center gap-2 rounded-md border border-blue-500/50 bg-transparent px-8 text-sm font-medium transition-colors hover:bg-blue-500/10"
-          >
-            <Github size={18} />
+            <Mail size={17} />
+            Email me
+          </a>
+          <a href={GITHUB} target="_blank" rel="noreferrer" className={secondaryBtn}>
+            <Github size={17} />
             GitHub
-          </MagneticButton>
-          <MagneticButton
-            href="https://www.linkedin.com/in/nicolai-dybro-jensen-45aa22258/"
-            className="underline-animate inline-flex h-11 items-center justify-center gap-2 rounded-md border border-blue-500/50 bg-transparent px-8 text-sm font-medium transition-colors hover:bg-blue-500/10"
-          >
-            <Linkedin size={18} />
+          </a>
+          <a href={LINKEDIN} target="_blank" rel="noreferrer" className={secondaryBtn}>
+            <Linkedin size={17} />
             LinkedIn
-          </MagneticButton>
-        </motion.div>
-      </motion.div>
-      </motion.div>
+          </a>
+        </div>
+      </div>
 
-      {/* Scroll Indicator */}
-      <motion.div className="absolute bottom-8" style={{ opacity }}>
-        <motion.div
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{
-            opacity: { delay: 1, duration: 0.5 },
-            y: { delay: 1, repeat: Infinity, duration: 1.5 },
-          }}
-        >
-          <ArrowDown className="text-zinc-400" size={24} />
-        </motion.div>
-      </motion.div>
+      {/* the desk: nearly full width */}
+      <div className="mx-auto mt-6 w-full max-w-[1520px] px-2 sm:px-4">
+        <DeskExperience />
+      </div>
     </section>
   );
 }

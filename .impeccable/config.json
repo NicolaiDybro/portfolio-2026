@@ -1,0 +1,38 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "15px",
+        "createdAt": "2026-10-26T14:02:06.706Z",
+        "reason": "Claude: DESIGN.md typography documents Label as 14 to 15px and Primary button as 15px/600; only the frontmatter token lists 14px"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "4px",
+        "createdAt": "2026-10-26T14:02:06.790Z",
+        "reason": "Claude: DESIGN.md shapes documents the focus ring as 3px Signal outline with 4px radius"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#f2b72e",
+        "createdAt": "2026-10-26T14:02:06.880Z",
+        "reason": "Claude: DESIGN.md Props Keep Their Colours rule names the yellow book #f2b72e as a 3D prop material"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#e5484d",
+        "createdAt": "2026-10-26T14:02:06.980Z",
+        "reason": "Claude: DESIGN.md Props Keep Their Colours rule names the red book #e5484d as a 3D prop material"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "11.5px",
+        "createdAt": "2026-10-26T14:02:07.064Z",
+        "reason": "Claude: phone-only size for floating desk labels so six pills fit on a 390px desk without overlapping; sm and up use 14px"
+      }
+    ]
+  }
+}

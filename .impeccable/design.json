@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T12:00:00Z",
+  "title": "Design System: Nicolai Dybro Jensen",
+  "extensions": {
+    "colorMeta": {
+      "signal": { "role": "primary", "displayName": "Signal Blue", "canonical": "#2457f5", "dark": "#6688ff", "tonalRamp": ["#0b1a4d", "#122a7a", "#1a44d1", "#2457f5", "#5079f7", "#8aa5fa", "#c2d1fc", "#e5ecff"] },
+      "signal-deep": { "role": "primary", "displayName": "Deep Signal", "canonical": "#1a44d1", "note": "Hover of filled Signal buttons; hard-coded in source, not yet a CSS variable.", "tonalRamp": ["#0a1747", "#10287a", "#1636a6", "#1a44d1", "#3d63e0", "#7392ec", "#aec0f5", "#e2e9fd"] },
+      "signal-soft": { "role": "primary", "displayName": "Signal Wash", "canonical": "#e5ecff", "dark": "#18234a", "tonalRamp": ["#18234a", "#2c3d7a", "#4d63a8", "#7b8fd0", "#a5b5e8", "#c8d3f6", "#e5ecff", "#f4f7ff"] },
+      "ground": { "role": "neutral", "displayName": "Studio Ground", "canonical": "#f4f5f7", "dark": "#0d0f12", "tonalRamp": ["#0d0f12", "#272b32", "#4a4f58", "#6f747d", "#9ba1ab", "#c8ccd2", "#e6e8ec", "#f4f5f7"] },
+      "surface": { "role": "neutral", "displayName": "Paper White", "canonical": "#ffffff", "dark": "#15181d", "tonalRamp": ["#15181d", "#2c3038", "#4f545d", "#767b84", "#a0a5ad", "#cdd0d5", "#eceef1", "#ffffff"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0f1115", "dark": "#e8eaed", "tonalRamp": ["#0f1115", "#22252b", "#3a3e46", "#555b66", "#7a808a", "#a3a8b0", "#cfd2d7", "#e8eaed"] },
+      "muted": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#555b66", "dark": "#9ba1ab", "tonalRamp": ["#1b1d21", "#2f333a", "#434852", "#555b66", "#737984", "#9ba1ab", "#c3c7cd", "#e7e9ec"] },
+      "faint": { "role": "neutral", "displayName": "Faint Slate", "canonical": "#8a909a", "dark": "#6b717b", "tonalRamp": ["#26292e", "#3f434a", "#5a5f68", "#757b85", "#8a909a", "#a9aeb6", "#cbced3", "#ebedef"] },
+      "rule": { "role": "neutral", "displayName": "Hairline", "canonical": "#d8dbe0", "dark": "#272b32", "tonalRamp": ["#272b32", "#3d424b", "#5a606a", "#7c828c", "#a0a5ad", "#c1c5cb", "#d8dbe0", "#eef0f2"] },
+      "band": { "role": "neutral", "displayName": "Night Band", "canonical": "#0f1115", "dark": "#15181d", "tonalRamp": ["#0f1115", "#22252b", "#3a3e46", "#555b66", "#7a808a", "#a3a8b0", "#cfd2d7", "#f1f2f4"] },
+      "code": { "role": "neutral", "displayName": "Code Black", "canonical": "#0c0e12", "dark": "#090b0e", "tonalRamp": ["#0c0e12", "#1e2127", "#34383f", "#4f545c", "#70757d", "#989ca3", "#c4c7cc", "#d3dae4"] },
+      "stage-top": { "role": "neutral", "displayName": "Stage Light", "canonical": "#f3f6fd", "dark": "#1b2233", "tonalRamp": ["#1b2233", "#343e56", "#56617c", "#7c87a1", "#a2acc3", "#c7cfe0", "#e3e8f4", "#f3f6fd"] },
+      "stage-bottom": { "role": "neutral", "displayName": "Stage Floor", "canonical": "#dde3ee", "dark": "#0c0f15", "tonalRamp": ["#0c0f15", "#252b38", "#454d5e", "#687184", "#8e96a8", "#b4bccb", "#dde3ee", "#eff2f7"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Closing statements only: contact band headline and 404 headline." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles (Experience, Projects, Skills)." },
+      "hero-name": { "displayName": "Hero Name", "purpose": "Name and role in the first viewport; role line in Signal Blue. Smaller than section headlines so the desk owns the stage." },
+      "title-lg": { "displayName": "Title Large", "purpose": "Project titles." },
+      "title": { "displayName": "Title", "purpose": "Job roles, skill names, desk panel title, sub-section heads." },
+      "lead": { "displayName": "Lead", "purpose": "One-sentence muted intro under each section headline." },
+      "body": { "displayName": "Body", "purpose": "Descriptions and panel prose, 56 to 60ch max." },
+      "label": { "displayName": "Label", "purpose": "Buttons, nav, desk labels, metadata lines (600)." },
+      "caption": { "displayName": "Caption", "purpose": "Muted sub-lines inside panel lists." },
+      "mono": { "displayName": "Mono", "purpose": "Code snippets only (JetBrains Mono)." }
+    },
+    "shadows": [
+      { "name": "panel-drop", "value": "0 24px 48px -24px rgb(0 0 0 / 0.45)", "purpose": "Desk panel sliding over the 3D scene." },
+      { "name": "label-lift", "value": "0 6px 16px -8px rgb(0 0 0 / 0.45)", "purpose": "Floating object labels over wood and screen." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Desk panel slide-in (500ms, opacity + translate 24px)." },
+      { "name": "label-hover", "value": "200ms", "purpose": "Desk label colour swap and 2px rise." },
+      { "name": "camera-glide", "value": "exponential damping, k = 1 - exp(-4 * dt)", "purpose": "Camera glides to the selected object; cuts instantly under reduced motion." },
+      { "name": "object-lift", "value": "0.08 units, damp rate 10", "purpose": "Hovered or selected desk object rises slightly." },
+      { "name": "pointer-parallax", "value": "x 0.5, y 0.25 units", "purpose": "Home camera drifts with the pointer; disabled under reduced motion and when a panel is open." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single filled action in a group: Email me, Read about the project, Back to the front page.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Email me</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 8px; background: var(--signal, #2457f5); color: #fff; font: 600 15px/1 'Schibsted Grotesk', system-ui, sans-serif; text-decoration: none; transition: background-color 150ms; } .ds-btn-primary:hover { background: #1a44d1; } .ds-btn-primary:focus-visible { outline: 3px solid var(--signal, #2457f5); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Neutral companion actions: GitHub, LinkedIn, Visit site.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">GitHub</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--rule, #d8dbe0); background: var(--surface, #fff); color: var(--ink, #0f1115); font: 600 15px/1 'Schibsted Grotesk', system-ui, sans-serif; text-decoration: none; transition: border-color 150ms; } .ds-btn-secondary:hover { border-color: var(--ink, #0f1115); } .ds-btn-secondary:focus-visible { outline: 3px solid var(--signal, #2457f5); outline-offset: 3px; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky blurred header: muted section links plus a solid ink Contact button.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Desk</a><a class=\"ds-nav-link\" href=\"#\">Experience</a><a class=\"ds-nav-link\" href=\"#\">Projects</a><a class=\"ds-nav-cta\" href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; padding: 10px 16px; background: color-mix(in srgb, var(--ground, #f4f5f7) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule, #d8dbe0); font-family: 'Schibsted Grotesk', system-ui, sans-serif; } .ds-nav-link { padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--muted, #555b66); text-decoration: none; transition: background-color 150ms, color 150ms; } .ds-nav-link:hover { background: var(--surface, #fff); color: var(--ink, #0f1115); } .ds-nav-cta { padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; background: var(--ink, #0f1115); color: var(--ground, #f4f5f7); text-decoration: none; transition: opacity 150ms; } .ds-nav-cta:hover { opacity: 0.85; } .ds-nav a:focus-visible { outline: 3px solid var(--signal, #2457f5); outline-offset: 3px; }"
+    },
+    {
+      "name": "Desk Choice",
+      "kind": "chip",
+      "refersTo": "desk-choice",
+      "description": "The desk's choices as plain pill buttons under the scene, with a plain-language hint; pressed state fills Signal.",
+      "html": "<div class=\"ds-choices\"><button class=\"ds-choice\" aria-pressed=\"true\">Projects <span class=\"ds-choice-hint\">What I have built</span></button><button class=\"ds-choice\" aria-pressed=\"false\">Skills <span class=\"ds-choice-hint\">What I am good at</span></button></div>",
+      "css": ".ds-choices { display: flex; flex-wrap: wrap; gap: 8px; } .ds-choice { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 9999px; border: 1px solid var(--rule, #d8dbe0); background: var(--surface, #fff); color: var(--ink, #0f1115); font: 600 14px/1 'Schibsted Grotesk', system-ui, sans-serif; cursor: pointer; transition: background-color 150ms, border-color 150ms, color 150ms; } .ds-choice-hint { color: var(--muted, #555b66); } .ds-choice:hover { border-color: var(--ink, #0f1115); } .ds-choice[aria-pressed=\"true\"] { background: var(--signal, #2457f5); border-color: var(--signal, #2457f5); color: #fff; } .ds-choice[aria-pressed=\"true\"] .ds-choice-hint { color: rgb(255 255 255 / 0.75); } .ds-choice:focus-visible { outline: 3px solid var(--signal, #2457f5); outline-offset: 3px; }"
+    },
+    {
+      "name": "Desk Label",
+      "kind": "custom",
+      "refersTo": "desk-label",
+      "description": "Floating pill label anchored to a 3D object; a real button that turns Signal and rises on hover.",
+      "html": "<button class=\"ds-desk-label\">Microgreens?</button>",
+      "css": ".ds-desk-label { white-space: nowrap; padding: 6px 12px; border-radius: 9999px; border: 1px solid var(--rule, #d8dbe0); background: var(--surface, #fff); color: var(--ink, #0f1115); font: 600 14px/1.2 'Schibsted Grotesk', system-ui, sans-serif; box-shadow: 0 6px 16px -8px rgb(0 0 0 / 0.45); cursor: pointer; transition: background-color 200ms, color 200ms, transform 200ms; } .ds-desk-label:hover { background: var(--signal, #2457f5); border-color: var(--signal, #2457f5); color: #fff; transform: translateY(-2px); } .ds-desk-label:focus-visible { outline: 3px solid var(--signal, #2457f5); outline-offset: 3px; }"
+    },
+    {
+      "name": "Desk Panel",
+      "kind": "card",
+      "refersTo": "desk-panel",
+      "description": "White panel that slides over the right of the scene when an object is chosen; title, ghost back button, plain-language body.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-panel-head\"><h3>Contact</h3><button class=\"ds-ghost\">&larr; Back to the desk</button></div><div class=\"ds-panel-body\"><p>I'm open to student jobs, internships and graduate roles. Email is the fastest way to reach me.</p></div></div>",
+      "css": ".ds-panel { width: 380px; max-width: 100%; border-radius: 12px; border: 1px solid var(--rule, #d8dbe0); background: var(--surface, #fff); color: var(--ink, #0f1115); box-shadow: 0 24px 48px -24px rgb(0 0 0 / 0.45); overflow: hidden; font-family: 'Schibsted Grotesk', system-ui, sans-serif; } .ds-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--rule, #d8dbe0); } .ds-panel-head h3 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.025em; } .ds-panel-body { padding: 20px; font-size: 16px; line-height: 1.625; } .ds-panel-body p { margin: 0; } .ds-ghost { padding: 6px 10px; border: 0; border-radius: 6px; background: transparent; color: var(--muted, #555b66); font: 600 14px/1 inherit; font-family: inherit; cursor: pointer; transition: background-color 150ms, color 150ms; } .ds-ghost:hover { background: var(--ground, #f4f5f7); color: var(--ink, #0f1115); } .ds-ghost:focus-visible { outline: 3px solid var(--signal, #2457f5); outline-offset: 3px; }"
+    },
+    {
+      "name": "Skill Tag",
+      "kind": "chip",
+      "refersTo": "skill-tag",
+      "description": "Small static pill listing the skills a project shows.",
+      "html": "<ul class=\"ds-tags\"><li class=\"ds-tag\">Full-stack web</li><li class=\"ds-tag\">Databases</li></ul>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; } .ds-tag { padding: 4px 10px; border-radius: 9999px; border: 1px solid var(--rule, #d8dbe0); background: var(--ground, #f4f5f7); color: var(--ink, #0f1115); font: 600 12.5px/1.2 'Schibsted Grotesk', system-ui, sans-serif; }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "status-chip",
+      "description": "Marks the current job; Signal Wash with a Signal dot.",
+      "html": "<span class=\"ds-status\"><span class=\"ds-status-dot\"></span>Current</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 9999px; background: var(--signal-soft, #e5ecff); color: var(--signal, #2457f5); font: 700 12px/1.4 'Schibsted Grotesk', system-ui, sans-serif; } .ds-status-dot { width: 6px; height: 6px; border-radius: 9999px; background: var(--signal, #2457f5); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Calm Studio Desk",
+    "overview": "The site is a quiet studio with one object in it worth looking at: a wooden desk, lit from above, rendered in 3D near the full width of the page. Everything around the desk is cool, pale and flat: a blue-grey ground, white surfaces, hairline rules, near-black ink. The desk carries the warmth (oak grain, a mug, coloured books, a tray of microgreens); the interface around it stays neutral so the scene reads as the subject.\n\nInteraction is \"click a labelled thing, get a plain answer\". Every object on the desk has a floating pill label that is a real button, and the same choices repeat underneath as ordinary pill buttons. Selecting one glides the camera to the object and slides a white panel in over the right side of the scene. Below the desk the page becomes a conventional, well-ruled document: Experience, Projects, Skills, then a dark contact band.\n\nDensity is moderate and type-led. Headings are heavy (800) and tightly tracked; body copy is plain 16px with generous leading. One blue does all the signalling.",
+    "keyCharacteristics": [
+      "Cool neutral ground with white surfaces; warmth lives only in the 3D props.",
+      "A single signal blue for actions, selection, current state and links.",
+      "Schibsted Grotesk at weight 800 with negative tracking for every heading level.",
+      "Sections separated by 1px hairline rules, with an ink-coloured rule on the first row of every list.",
+      "Pills for choices and tags, 8px corners for actions, 12px for containers, 24px for the stage.",
+      "Motion is confined to the desk: camera glide, object lift, panel slide."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "In the interface, Signal Blue is the only chromatic colour. If a UI element is blue, it is clickable, selected, current or focused; nothing decorative is blue.", "section": "colors" },
+      { "name": "The Props Keep Their Colours Rule", "body": "The One Signal Rule governs the interface, not the desk. The 3D objects carry their own material colours (oak #b48a62 legs, a yellow #f2b72e and red #e5484d book, green microgreens #4f9d3a / #5cae45, a dark monitor #202227). Do not neutralise props to fit the UI palette; do not lift prop colours into the UI.", "section": "colors" },
+      { "name": "The Weight Not Face Rule", "body": "Hierarchy comes from Schibsted Grotesk's 800 against 400/600; never introduce a second display face.", "section": "typography" },
+      { "name": "The Sentence Case Rule", "body": "All labels, buttons, headings and nav are sentence case at normal tracking. The system has no uppercase or letter-spaced small text.", "section": "typography" },
+      { "name": "The Only Over The Scene Rule", "body": "Shadows exist only on elements that hover over the 3D canvas. Anything in the document flow is flat, separated by tone and hairlines.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do route every action, selection, current state and focus through Signal Blue, and nothing else.",
+      "Do keep every heading in Schibsted Grotesk 800 with negative tracking (-0.025em to -0.04em by size).",
+      "Do separate in-flow content with 1px Hairline rules and tonal bands; start ruled lists with an Ink rule.",
+      "Do give every 3D object a visible text label that is a real button, and offer the same choices as plain pill buttons outside the canvas.",
+      "Do keep the desk panel's content plain-language and readable without the scene; on phones, render it below the stage.",
+      "Do honour reduced motion: the camera cuts, parallax stops, transitions collapse to 1ms.",
+      "Do define both light and dark values for every new colour variable."
+    ],
+    "donts": [
+      "Don't add shadows to anything in the document flow; shadows are for elements floating over the scene.",
+      "Don't add a second accent hue to the interface; prop colours stay on the desk.",
+      "Don't use uppercase, letter-spaced eyebrow or kicker labels above headings.",
+      "Don't require 3D controls (orbit, drag, zoom) to reach any content; navigation is click-a-label only.",
+      "Don't introduce motion outside the desk; the rest of the page does not animate on its own.",
+      "Don't hard-code colours that the variables already cover; Deep Signal, the contact-band link blues and the copy button's hover ink should resolve through tokens."
+    ]
+  }
+}

@@ -1,36 +1,27 @@
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import Skills from "../components/Skills";
+import Experience from "../components/Experience";
 import Projects from "../components/Projects";
-import TechStack from "../components/TechStack";
+import Skills from "../components/Skills";
 import Contact from "../components/Contact";
-import ScrollProgress from "../components/ScrollProgress";
-import LoadingScreen from "../components/LoadingScreen";
-import BackToTop from "../components/BackToTop";
-import ScrollHoverGuard from "../components/ScrollHoverGuard";
 
 export default function Home() {
   return (
     <>
-      <LoadingScreen />
-      <ScrollHoverGuard />
-      <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
-        <ScrollProgress />
-        <Header />
-        <main className="flex w-full flex-col">
-          <Hero />
-          <Skills />
-          <Projects />
-          <TechStack />
-          <Contact />
-        </main>
-      <footer className="border-t border-zinc-200 py-8 dark:border-zinc-800">
-        <div className="mx-auto max-w-5xl px-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-          © {new Date().getFullYear()} Nicolai. Made with ❤️ and Next.js
-        </div>
-      </footer>
-      <BackToTop />
-      </div>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[60] focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:font-bold"
+      >
+        Skip to content
+      </a>
+      <Header />
+      <main id="main" className="flex w-full flex-col">
+        <Hero />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
     </>
   );
 }
