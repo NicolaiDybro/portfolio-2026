@@ -15,6 +15,9 @@
   --dot: rgb(15 17 21 / 0.13);
   --signal: #2457f5;
   --signal-soft: #e5ecff;
+  /* filled buttons with white text */
+  --fill: #2457f5;
+  --fill-hover: #1a44d1;
   --band: #0f1115;
   --code: #0c0e12;
   --stage-top: #f3f6fd;
@@ -33,6 +36,8 @@
   --dot: rgb(255 255 255 / 0.08);
   --signal: #6688ff;
   --signal-soft: #18234a;
+  --fill: #3d63f0;
+  --fill-hover: #2f52d9;
   --band: #15181d;
   --code: #090b0e;
   --stage-top: #1b2233;
@@ -50,6 +55,8 @@
   --color-rule: var(--rule);
   --color-signal: var(--signal);
   --color-signal-soft: var(--signal-soft);
+  --color-fill: var(--fill);
+  --color-fill-hover: var(--fill-hover);
   --color-band: var(--band);
   --color-code: var(--code);
   --font-sans: var(--font-schibsted);
@@ -70,11 +77,11 @@ body {
 }
 
 ::selection {
-  background: var(--signal);
+  background: var(--fill);
   color: #ffffff;
 }
 
-:focus-visible {
+:focus-visible:not([tabindex="-1"]) {
   outline: 3px solid var(--signal);
   outline-offset: 3px;
   border-radius: 4px;

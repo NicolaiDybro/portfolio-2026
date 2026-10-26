@@ -12,7 +12,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-rule bg-ground/85 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <a href="#top" className="flex items-center gap-2.5 rounded">
-          {/* mark: three linked nodes */}
+          {/* mark: two linked nodes */}
           <svg viewBox="0 0 28 28" className="h-7 w-7" aria-hidden>
             <rect x="1" y="9" width="8" height="10" rx="2" fill="none" stroke="var(--ink)" strokeWidth="1.8" />
             <rect x="19" y="9" width="8" height="10" rx="2" fill="var(--signal)" />

@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="mt-5 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap">
           <a
             href={`mailto:${EMAIL}`}
-            className="col-span-2 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-signal px-5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a44d1]"
+            className="col-span-2 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-fill px-5 text-[15px] font-semibold text-white transition-colors hover:bg-fill-hover"
           >
             <Mail size={17} />
             Email me

@@ -12,6 +12,8 @@ type Props = {
   reduceMotion: boolean;
   mobile: boolean;
   dark: boolean;
+  /** Stop rendering while the scene is off-screen. */
+  paused?: boolean;
 };
 
 /* ---------- small helpers ---------- */
@@ -418,13 +420,14 @@ function CameraRig({ active, reduceMotion, mobile }: Pick<Props, "active" | "red
 
 /* ---------- scene ---------- */
 
-export default function DeskCanvas({ active, onSelect, reduceMotion, mobile, dark }: Props) {
+export default function DeskCanvas({ active, onSelect, reduceMotion, mobile, dark, paused }: Props) {
   const [hovered, setHovered] = useState<StopId | null>(null);
   const hp = { active, hovered, setHovered, onSelect };
 
   return (
     <Canvas
       shadows
+      frameloop={paused ? "never" : "always"}
       dpr={[1, mobile ? 1.5 : 2]}
       camera={{ position: mobile ? HOME_MOBILE.pos : HOME.pos, fov: mobile ? 50 : 36 }}
       gl={{ antialias: true, alpha: true }}
@@ -477,7 +480,7 @@ export default function DeskCanvas({ active, onSelect, reduceMotion, mobile, dar
               onPointerLeave={() => setHovered(null)}
               className={`whitespace-nowrap rounded-full border px-2 py-1 text-[11.5px] font-semibold sm:px-3 sm:py-1.5 shadow-[0_6px_16px_-8px_rgb(0_0_0/0.45)] transition-[background-color,color,transform] duration-200 sm:text-sm ${
                 hovered === s.id
-                  ? "-translate-y-0.5 border-signal bg-signal text-white"
+                  ? "-translate-y-0.5 border-fill bg-fill text-white"
                   : "border-rule bg-surface text-ink"
               }`}
             >

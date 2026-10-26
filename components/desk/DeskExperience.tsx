@@ -23,11 +23,19 @@ const DeskCanvas = dynamic(() => import("./DeskCanvas"), {
 function Panel({ id, onClose }: { id: StopId; onClose: () => void }) {
   const stop = stops.find((s) => s.id === id)!;
   const jp = projects.find((p) => p.id === "jpgroent-platform");
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  // move focus into the panel so keyboard and screen reader users land on it
+  useEffect(() => {
+    headingRef.current?.focus({ preventScroll: true });
+  }, [id]);
 
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between gap-3 border-b border-rule px-5 py-3.5">
-        <h3 className="text-xl font-extrabold tracking-tight">{stop.label}</h3>
+        <h3 ref={headingRef} tabIndex={-1} className="text-xl font-extrabold tracking-tight focus:outline-none">
+          {stop.label}
+        </h3>
         <button
           type="button"
           onClick={onClose}
@@ -157,14 +165,14 @@ function Panel({ id, onClose }: { id: StopId; onClose: () => void }) {
             </p>
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-signal px-5 font-semibold text-white transition-colors hover:bg-[#1a44d1]"
+              className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-fill px-5 font-semibold text-white transition-colors hover:bg-fill-hover"
             >
               <Mail size={18} />
               Email me
             </a>
             <p className="mt-3 break-all text-center text-[15px] text-muted">{EMAIL}</p>
-            <div className="mt-4 flex flex-wrap justify-center gap-2 [&>button]:border-rule [&>button]:text-ink [&>button:hover]:bg-ink [&>button:hover]:text-ground">
-              <CopyEmailButton />
+            <div className="mt-4 flex flex-wrap justify-center gap-2">
+              <CopyEmailButton tone="light" />
             </div>
             <div className="mt-6 grid grid-cols-2 gap-2">
               <a href={LINKEDIN} target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-rule font-semibold transition-colors hover:border-ink">
@@ -191,7 +199,7 @@ function Panel({ id, onClose }: { id: StopId; onClose: () => void }) {
               the drivers.
             </p>
             <div className="mt-5 flex flex-col gap-2">
-              <a href={`#${jp.id}`} className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-signal px-4 font-semibold text-white transition-colors hover:bg-[#1a44d1]">
+              <a href={`#${jp.id}`} className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-fill px-4 font-semibold text-white transition-colors hover:bg-fill-hover">
                 Read about the project
                 <ArrowRight size={16} />
               </a>
@@ -213,6 +221,17 @@ export default function DeskExperience() {
   const [active, setActive] = useState<StopId | null>(null);
   const [env, setEnv] = useState({ reduceMotion: false, mobile: false, dark: false });
   const panelRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [onScreen, setOnScreen] = useState(true);
+
+  // stop rendering the 3D scene while it is scrolled out of view (saves battery)
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setOnScreen(e.isIntersecting));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     const read = () =>
@@ -250,14 +269,14 @@ export default function DeskExperience() {
   return (
     <div>
       <div className="relative overflow-hidden rounded-3xl border border-rule bg-[radial-gradient(120%_90%_at_50%_0%,var(--stage-top),var(--stage-bottom))]">
-        <div className="h-[400px] sm:h-[560px] lg:h-[min(80vh,820px)] lg:min-h-[600px]">
-          <DeskCanvas active={active} onSelect={select} {...env} />
+        <div ref={stageRef} className="h-[400px] sm:h-[560px] lg:h-[min(80vh,820px)] lg:min-h-[600px]">
+          <DeskCanvas active={active} onSelect={select} paused={!onScreen} {...env} />
         </div>
 
         <p className={`pointer-events-none absolute left-4 top-4 inline-flex transition-opacity duration-300 ${active ? "opacity-0" : ""}`} >
           <span className="inline-flex items-center gap-2 rounded-full bg-surface/85 px-3 py-1.5 text-[13px] font-semibold text-muted backdrop-blur sm:ml-1 sm:mt-1">
           <MousePointerClick size={15} aria-hidden />
-          Click something on the desk
+          {env.mobile ? "Tap something on the desk" : "Click something on the desk"}
           </span>
         </p>
 
@@ -289,7 +308,7 @@ export default function DeskExperience() {
             aria-pressed={active === s.id}
             className={`inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition-colors ${
               active === s.id
-                ? "border-signal bg-signal text-white"
+                ? "border-fill bg-fill text-white"
                 : "border-rule bg-surface hover:border-ink"
             }`}
           >
