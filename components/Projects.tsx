@@ -21,15 +21,8 @@ export default function Projects() {
         </p>
       </motion.div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((p) => (
-          <ProjectCard
-            key={p.id}
-            title={p.title}
-            description={p.description}
-            href={p.href}
-            image={p.image}
-            tech={p.tech}
-          />
+        {projects.map(({ id, ...project }) => (
+          <ProjectCard key={id} {...project} />
         ))}
       </div>
     </section>

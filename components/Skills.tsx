@@ -1,50 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Palette, Zap, Database, Globe, Sparkles } from "lucide-react";
+import { Code2, Server, Database, Cpu, Workflow, Rocket } from "lucide-react";
 
 const skills = [
   {
     icon: Code2,
-    title: "Frontend Development",
-    description: "React, Next.js, TypeScript, Tailwind CSS, Svelte and Vue",
+    title: "Full-Stack Web",
+    description:
+      "Next.js, React, TypeScript and Tailwind CSS, plus Svelte and Vue. From internal tools to production apps.",
     color: "from-blue-500 to-cyan-500",
-    size: "large",
+  },
+  {
+    icon: Server,
+    title: "Backend & APIs",
+    description:
+      "Node.js, Express, tRPC and Java with Spring Boot. REST APIs, validation and authentication.",
+    color: "from-cyan-500 to-teal-500",
   },
   {
     icon: Database,
-    title: "Backend Development",
-    description: "Node.js, PostgreSQL, MongoDB, GraphQL and REST APIs",
-    color: "from-cyan-500 to-teal-500",
-    size: "large",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Figma and user-friendly design",
+    title: "Databases",
+    description:
+      "PostgreSQL and MySQL, with data models built around real business workflows.",
     color: "from-blue-600 to-indigo-600",
-    size: "normal",
   },
   {
-    icon: Zap,
-    title: "Performance",
-    description: "Optimization, SEO, Core Web Vitals",
+    icon: Cpu,
+    title: "Languages & Compilers",
+    description:
+      "Rust, lexers, parser grammars, type checking and interpreters.",
     color: "from-cyan-600 to-blue-600",
-    size: "normal",
   },
   {
-    icon: Sparkles,
-    title: "Animations",
-    description: "Framer Motion, CSS animations, GSAP",
+    icon: Workflow,
+    title: "Integrations & Automation",
+    description:
+      "Discord, GitHub, Trello, Google Calendar and Dinero integrations, scheduled jobs and print automation.",
     color: "from-blue-500 to-purple-500",
-    size: "normal",
   },
   {
-    icon: Globe,
-    title: "Deployment",
-    description: "Vercel, AWS, Docker, CI/CD",
+    icon: Rocket,
+    title: "DevOps & Deployment",
+    description:
+      "Docker, GitHub Actions, Jenkins and Vercel, with staging-to-production workflows.",
     color: "from-teal-500 to-cyan-500",
-    size: "normal",
   },
 ];
 
